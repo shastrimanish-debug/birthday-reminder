@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -159,7 +160,7 @@ class _HomePageState extends State<HomePage> {
     const initSettings = InitializationSettings(android: androidSettings);
 
     await _notifications.initialize(
-      initSettings,
+      settings: initSettings,
       onDidReceiveNotificationResponse: (response) async {
         final payload = response.payload?.trim();
         if (payload != null && payload.isNotEmpty) {
