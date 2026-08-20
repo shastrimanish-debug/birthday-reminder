@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.shaktivyavhar.birthday_reminder"
-    compileSdk = 35
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     defaultConfig {
