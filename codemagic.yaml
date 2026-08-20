@@ -1,6 +1,6 @@
 workflows:
   android-release:
-    name: Birthday Reminder Android Release
+    name: Bizsy Beez Kids Android Release
     max_build_duration: 30
     environment:
       flutter: stable
