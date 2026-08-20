@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+if command -v gradle >/dev/null 2>&1; then
+  exec gradle "$@"
+fi
+GRADLE_VERSION=8.10.2
+CACHE="${HOME:-/tmp}/.gradle-wrapper-cache/gradle-${GRADLE_VERSION}"
+if [ ! -x "$CACHE/bin/gradle" ]; then
+  mkdir -p "$(dirname "$CACHE")"
+  TMP="${CACHE}.zip"
+  curl -fsSL "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" -o "$TMP"
+  rm -rf "$CACHE"
+  unzip -q "$TMP" -d "$(dirname "$CACHE")"
+  rm -f "$TMP"
+fi
+exec "$CACHE/bin/gradle" "$@"
